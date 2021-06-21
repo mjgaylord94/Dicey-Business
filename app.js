@@ -4,22 +4,36 @@ let totalButton = document.getElementById(`total-button`)
 let diceContainer = document.getElementById(`dice-container`)
 
 class Die {
-    constructor(value) {
-        this.value = value
+    constructor() {
         this.div = document.createElement(`div`)
         this.div.className = `die`
-        this.text = document.createTextNode(`${value}`)
-
-        this.div.append(this.text)
         diceContainer.append(this.div)
+        this.value = this.roll()
+
+        this.div.addEventListener(`click`, () => this.roll())
+        this.div.addEventListener(`dblclick`, () => this.div.remove())
+        rollButton.addEventListener(`click`, () => this.roll())
     }
 
     roll() {
-        this.value = Math.floor(Math.random() * 6)
-        console.log(value)
+        let random = Math.floor(Math.random() * 6) + 1
+        this.value = random
+
+        this.div.innerText = this.value
     }
 }
 
 newButton.addEventListener(`click`, function() {
-    new Die(Math.floor(Math.random() * 6))
+    new Die()
+})
+
+totalButton.addEventListener(`click`, function() {
+    let dice = document.getElementsByClassName(`die`)
+    let total = 0
+
+    for (i = 0; i < dice.length; i++) {
+        total += parseInt(dice[i].innerText)
+    }
+
+    alert(`${total}`)
 })

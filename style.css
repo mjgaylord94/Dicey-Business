@@ -1,5 +1,21 @@
+#button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    padding: 1em;
+    font-size: 2em;
+}
+
 button:hover {
     cursor: pointer;
+}
+
+#dice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .die {
@@ -8,4 +24,9 @@ button:hover {
     border: 1px solid black;
     text-align: center;
     font-size: 5em;
+    margin: 1em;
+}
+
+.die:hover {
+    cursor: pointer;
 }
